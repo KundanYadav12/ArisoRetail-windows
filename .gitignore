@@ -1,0 +1,103 @@
+# ==============================================================================
+# Ariso Retail POS — Windows Desktop Application (.gitignore)
+# ==============================================================================
+
+# 1. Dependencies & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp
+.pnp.js
+
+# 2. Production Builds, Bundles & Electron Installers
+dist/
+dist-electron/
+out/
+build/
+release/
+win-unpacked/
+*.exe
+*.msi
+*.appx
+*.blockmap
+*.zip
+*.7z
+*.tar.gz
+builder-effective-config.yaml
+builder-debug.yml
+.electron-builder/
+
+# 3. Code Signing Certificates & Secrets (Prevent credential exposure)
+certs/*.pfx
+certs/*.p12
+certs/*.key
+certs/*.pem
+certs/*.cer
+*.pfx
+*.p12
+*.key
+*.pem
+# Preserve certificate setup documentation and helper scripts
+!certs/README.md
+!certs/*.ps1
+!certs/*.bat
+
+# 4. Environment Variables & Local Config
+.env
+.env.*
+*.local
+!*.env.example
+
+# 5. Logs & Runtime Diagnostics
+logs/
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# 6. Windows OS Files & System Metadata
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.lnk
+
+# 7. macOS & Linux OS Files (Cross-platform compatibility)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# 8. IDE & Editor Files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 9. Testing, Diagnostics & Scratch Artifacts
+coverage/
+.nyc_output/
+tests/
+test/
+scratch/
+scratch_*
+test-*.cjs
+test-*.js
+*.test.*
+*.spec.*
+
+# 10. Temporary Auto-Updater Files
+ariso_update_runner_*.bat
+*.tmp
+*.temp
+*.part

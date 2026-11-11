@@ -1,0 +1,60 @@
+{
+  "name": "ariso-retail-pos-desktop",
+  "version": "1.1.0",
+  "description": "Ariso Retail POS Desktop Application",
+  "author": "Ariso Retail",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:frontend": "npm --prefix ../frontend run build",
+    "copy:dist": "node -e \"const fs=require('fs'); fs.cpSync('../frontend/dist', './dist', {recursive: true});\"",
+    "pack": "npm run build:frontend && npm run copy:dist && electron-builder --dir",
+    "dist:win": "npm run build:frontend && npm run copy:dist && electron-builder --win",
+    "build": "npm run dist:win"
+  },
+  "dependencies": {
+    "node-thermal-printer": "^4.6.1"
+  },
+  "devDependencies": {
+    "electron": "^44.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.arisoretail.pos",
+    "productName": "Ariso Retail POS",
+    "asar": true,
+    "compression": "normal",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "dist/**/*",
+      "public/**/*",
+      "main.cjs",
+      "preload.cjs",
+      "updaterService.cjs",
+      "thermalPrinterService.cjs",
+      "thermalImageRaster.cjs",
+      "package.json"
+    ],
+    "win": {
+      "icon": "public/icon.ico",
+      "target": [
+        "nsis",
+        "dir"
+      ]
+    },
+    "nsis": {
+      "installerIcon": "public/icon.ico",
+      "uninstallerIcon": "public/icon.ico",
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Ariso Retail POS",
+      "differentialPackage": false
+    }
+  }
+}
